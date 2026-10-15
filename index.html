@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noor - Ramadhan Zakat Qurban</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{colors:{noor:{900:'#0A2E26',800:'#134E3D',gold:'#D4A75C',cream:'#FFF9ED'}}}}}
+</script>
+</head>
+<body class="bg-[#FFF9ED] text-[#0A2E26] font-['Plus_Jakarta_Sans']">
+
+<nav class="flex justify-between items-center p-6 max-w-6xl mx-auto">
+  <div class="flex items-center gap-2">
+    <div class="w-8 h-8 bg-[#0A2E26] text-[#D4A75C] rounded-full grid place-items-center font-['Amiri']">نور</div>
+    <b class="tracking-[0.3em] text-sm">NOOR - Imam Arsya</b>
+  </div>
+  <div class="flex gap-1 bg-white p-1 rounded-full shadow border">
+    <button onclick="show('ramadhan')" id="b-ramadhan" class="px-4 py-2 rounded-full bg-[#0A2E26] text-white text-xs">Ramadhan</button>
+    <button onclick="show('zakat')" id="b-zakat" class="px-4 py-2 rounded-full text-xs">Zakat</button>
+    <button onclick="show('qurban')" id="b-qurban" class="px-4 py-2 rounded-full text-xs">Qurban</button>
+  </div>
+</nav>
+<div id="ramadhan" class="max-w-6xl mx-auto p-6" style="background:#FFF9ED">
+<div style="background:white;border-radius:32px;padding:32px;border:1px solid #eee">
+<h1 style="font-size:36px;font-weight:800;color:#0A2E26">Sucikan Harta, <span style="color:#D4A75C">Tenangkan Jiwa</span></h1>
+<p style="color:#0A2E26;opacity:0.6">Ini udah warna cream beneran</p>
+</div>
+</div>
+
+<div id="zakat" class="hidden max-w-6xl mx-auto p-6" style="background:#FFF9ED">
+<div style="background:white;border-radius:32px;padding:32px;border:1px solid #eee">
+<h1 style="color:#0A2E26">Kalkulator Zakat <span style="color:#D4A75C">Nisab</span></h1>
+<input id="harta" type="number" placeholder="Total harta" style="width:100%;padding:16px;border-radius:12px;background:#FFF9ED;border:1px solid #ddd;margin-top:12px" oninput="document.getElementById('hasil').innerText='Rp '+(this.value*0.025).toLocaleString('id-ID')">
+<h2 id="hasil" style="font-size:32px;font-weight:bold;color:#0A2E26;margin-top:12px">Rp 0</h2>
+</div>
+</div>
+
+<div id="qurban" class="hidden max-w-6xl mx-auto p-6" style="background:#FFF9ED">
+<div style="background:#0A2E26;color:#FFF9ED;border-radius:32px;padding:24px">🐄 <b style="color:#D4A75C">Sapi Patungan</b> - Rp 2.8jt / orang (warna hijau + emas)</div>
+</div>
+<!-- 1. RAMADHAN -->
+<div id="ramadhan" class="page max-w-6xl mx-auto px-6 py-8">
+  <p class="font-['Amiri'] text-3xl text-[#D4A75C]">رمضان كريم</p>
+  <h1 class="text-6xl font-bold leading-none mt-2">Sucikan Harta,<br><span class="text-[#D4A75C] font-['Amiri'] font-normal italic">Tenangkan Jiwa</span></h1>
+  <div class="grid md:grid-cols-3 gap-4 mt-10">
+    <div class="bg-white p-5 rounded-2xl border">📖 Tilawah - 1 Juz/hari</div>
+    <div class="bg-white p-5 rounded-2xl border">🤲 Dhuha - Pembuka Rezeki</div>
+    <div class="bg-[#0A2E26] text-white p-5 rounded-2xl">💛 Sedekah Subuh</div>
+  </div>
+</div>
+
+<!-- 2. ZAKAT -->
+<div id="zakat" class="page hidden max-w-6xl mx-auto px-6 py-8">
+  <h1 class="text-5xl font-bold">Kalkulator Zakat Maal</h1>
+  <p class="opacity-60 mt-2 text-sm">Nisab 85gr emas - Rp 90.000.000</p>
+  <div class="bg-white rounded-[2rem] p-6 border shadow-xl mt-6 max-w-md">
+    <input id="harta" type="number" placeholder="Total harta kamu" class="w-full bg-[#FFF9ED] border rounded-xl p-3" oninput="hitung()">
+    <div class="mt-4 bg-[#0A2E26] text-white rounded-xl p-4">
+      <p class="text-xs opacity-60">Zakat 2.5%</p>
+      <p id="hasil" class="text-3xl font-bold text-[#D4A75C]">Rp 0</p>
+    </div>
+  </div>
+</div>
+
+<!-- 3. QURBAN -->
+<div id="qurban" class="page hidden max-w-6xl mx-auto px-6 py-8">
+  <h1 class="text-5xl font-bold">Qurban <span class="text-[#D4A75C] font-['Amiri']">Idul Adha</span></h1>
+  <p class="opacity-60 text-sm mt-2">Oleh Imam Arsya - Kelas Qurban</p>
+  <div class="grid md:grid-cols-2 gap-5 mt-6">
+    <div class="bg-white rounded-2xl p-3 border">
+      <img src="https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?q=80&w=600" class="rounded-xl h-48 w-full object-cover">
+      <div class="p-3"><b>Sapi Qurban</b><p class="text-xs opacity-60">Patungan 7 orang - Rp 2.8jt/orang</p></div>
+    </div>
+    <div class="bg-white rounded-2xl p-3 border">
+      <img src="https://images.unsplash.com/photo-1484557985045-edf25e08da73?q=80&w=600" class="rounded-xl h-48 w-full object-cover">
+      <div class="p-3"><b>Kambing dan Domba</b><p class="text-xs opacity-60">1 ekor 1 orang - Rp 2.2jt</p></div>
+    </div>
+  </div>
+  <div class="bg-white border rounded-2xl p-5 mt-5">
+    <b>Apa itu Qurban?</b>
+    <p class="text-sm opacity-60 mt-1">Qurban adalah ibadah menyembelih hewan ternak karena Allah pada Idul Adha untuk dibagikan kepada yang membutuhkan.</p>
+  </div>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.page').forEach(e=>e.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  document.querySelectorAll('nav button').forEach(e=>e.className='px-4 py-2 rounded-full text-xs');
+  document.getElementById('b-'+id).className='px-4 py-2 rounded-full bg-[#0A2E26] text-white text-xs';
+}
+function hitung(){
+  let h=document.getElementById('harta').value||0;
+  document.getElementById('hasil').innerText='Rp '+ (h*0.025).toLocaleString('id-ID');
+}
+</script>
+</body>
+</html>
